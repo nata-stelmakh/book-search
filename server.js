@@ -17,14 +17,10 @@ if (process.env.NODE_ENV === "production") {
 app.use(routes);
 
 // Connect to the Mongo DB
-mongoose.connect(
-  process.env.MONGODB_URI ||
-    "mongodb+srv://username1:password1@cluster0.abhsh.mongodb.net/db?retryWrites=true&w=majority",
-  {
-    useCreateIndex: true,
-    useNewUrlParser: true,
-  }
-);
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/books", {
+  useCreateIndex: true,
+  useNewUrlParser: true,
+});
 
 // Start the API server
 app.listen(PORT, () =>
